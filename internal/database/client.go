@@ -17,7 +17,7 @@ type Client struct {
 }
 
 func NewDatabaseClient() (DatabaseClient, error) {
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=d% sslmode=%s",
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=%s",
 		"localhost",
 		"postgres",
 		"postgres",
@@ -45,7 +45,7 @@ func NewDatabaseClient() (DatabaseClient, error) {
 
 func (c Client) Ready() bool {
 	var ready string
-	tx := c.DB.Raw("SELECT 1 as 'ready'").Scan(&ready)
+	tx := c.DB.Raw("SELECT 1 as ready").Scan(&ready)
 	if tx.Error != nil {
 		return false
 	}

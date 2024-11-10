@@ -4,12 +4,15 @@ import (
 	"errors"
 	"github.com/labstack/echo/v4"
 	"github.com/uocli/go-microservice/internal/database"
+	"github.com/uocli/go-microservice/internal/models"
 	"log"
 	"net/http"
 )
 
 type Server interface {
 	Start() error
+	Readiness(echo.Context) error
+	Liveness(echo.Context) error
 }
 
 type EchoServer struct {
@@ -38,5 +41,24 @@ func (s *EchoServer) Start() error {
 }
 
 func (s *EchoServer) registerRoutes() error {
+	s.echo.GET("/readiness", s.Readiness)
+	s.echo.GET("/liveness", s.Liveness)
 	return nil
+}
+
+func (s *EchoServer) Readiness(ctx echo.Context) error {
+	if !s.DB.Ready() {
+		return ctx.JSON(http.StatusInternalServerError, models.Health{
+			Status: "Failure",
+		})
+	}
+	return ctx.JSON(http.StatusOK, models.Health{
+		Status: "OK",
+	})
+}
+
+func (s *EchoServer) Liveness(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, models.Health{
+		Status: "OK",
+	})
 }
