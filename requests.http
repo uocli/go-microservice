@@ -1,0 +1,18 @@
+### POST request to products server
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+  "name": "Carrot",
+  "price": 2.99,
+  "vendorId": "c8ab11e3-6efa-4412-951e-fd2b3810e7c1"
+}
+
+### POST request to service server
+POST http://localhost:8080/services
+Content-Type: application/json
+
+{
+  "name": "Delivery",
+  "price": 5.99
+}
