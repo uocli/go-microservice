@@ -33,3 +33,17 @@ func (s *EchoServer) AddCustomer(ctx echo.Context) error {
 	}
 	return ctx.JSON(http.StatusOK, customer)
 }
+
+func (s *EchoServer) GetCustomerByID(ctx echo.Context) error {
+	ID := ctx.Param("id")
+	customer, err := s.DB.GetCustomerByID(ctx.Request().Context(), ID)
+	if err != nil {
+		switch err.(type) {
+		case *dberrors.NotFoundError:
+			return ctx.JSON(http.StatusNotFound, err)
+		default:
+			return ctx.JSON(http.StatusInternalServerError, err)
+		}
+	}
+	return ctx.JSON(http.StatusOK, customer)
+}
