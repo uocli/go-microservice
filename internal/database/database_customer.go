@@ -72,3 +72,7 @@ func (c Client) UpdateCustomer(ctx context.Context, customer *models.Customer) (
 	}
 	return newCustomer, nil
 }
+
+func (c Client) DeleteCustomer(ctx context.Context, ID string) error {
+	return c.DB.WithContext(ctx).Delete(&models.Customer{CustomerID: ID}).Error
+}

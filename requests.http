@@ -45,3 +45,6 @@ Content-Type: application/json
   "phoneNumber": "123-456-7890",
   "address": "123 Test St Test City TS 12345"
 }
+
+### DELETE request to customer server with query parameter id
+DELETE http://localhost:8080/customers/6fa0217a-d9f7-4740-9729-af2c17ee4322
