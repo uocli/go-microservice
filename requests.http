@@ -27,3 +27,7 @@ GET http://localhost:8080/products/3b776a39-d51a-4e91-8670-b8cbe390eace
 
 ### GET request to services server with query parameter id
 GET http://localhost:8080/services/3b776a39-d51a-4e91-8670-b8cbe390eace
+
+
+### GET request to vendors server with query parameter id
+GET http://localhost:8080/vendors/59df2b49-f356-43a0-a0d6-07c8e4c534ae
