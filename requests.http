@@ -31,3 +31,17 @@ GET http://localhost:8080/services/3b776a39-d51a-4e91-8670-b8cbe390eace
 
 ### GET request to vendors server with query parameter id
 GET http://localhost:8080/vendors/59df2b49-f356-43a0-a0d6-07c8e4c534ae
+
+
+### PUT request to customer server with query parameter id
+PUT http://localhost:8080/customers/6fa0217a-d9f7-4740-9729-af2c17ee4322
+Content-Type: application/json
+
+{
+  "customerId": "6fa0217a-d9f7-4740-9729-af2c17ee4322",
+  "firstName": "Test Customer",
+  "lastName": "Test Customer",
+  "emailAddress": "test@test.com",
+  "phoneNumber": "123-456-7890",
+  "address": "123 Test St Test City TS 12345"
+}
