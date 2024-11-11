@@ -21,3 +21,7 @@ Content-Type: application/json
 GET http://localhost:8080/customers/2dd96a00-efc3-4c04-b89d-700daad706f9
 
 
+### GET request to products server with query parameter id
+GET http://localhost:8080/products/3b776a39-d51a-4e91-8670-b8cbe390eace
+
+
