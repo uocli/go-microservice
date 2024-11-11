@@ -31,7 +31,7 @@ func (c Client) AddCustomer(ctx context.Context, customer *models.Customer) (*mo
 
 func (c Client) GetCustomerByID(ctx context.Context, ID string) (*models.Customer, error) {
 	customer := &models.Customer{}
-	result := c.DB.WithContext(ctx).Where(models.Customer{
+	result := c.DB.WithContext(ctx).Where(&models.Customer{
 		CustomerID: ID,
 	}).First(&customer)
 	if result.Error != nil {

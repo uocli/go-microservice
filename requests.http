@@ -18,6 +18,6 @@ Content-Type: application/json
 }
 
 ### GET request to customers server with query parameter id
-GET http://localhost:8080/customers?id=6bb56738-20d6-4a7b-9362-1416fd35fd10
+GET http://localhost:8080/customers/2dd96a00-efc3-4c04-b89d-700daad706f9
 
 
